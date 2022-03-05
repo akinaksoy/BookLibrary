@@ -25,7 +25,9 @@ class AddPageViewController: UIViewController, UIImagePickerControllerDelegate &
 
         
         let recognizerGesture = UITapGestureRecognizer.init(target: self, action: #selector(selectImage))
+        
         bookImageView.addGestureRecognizer(recognizerGesture)
+        bookImageView.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
     }
     

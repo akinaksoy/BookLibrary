@@ -38,7 +38,7 @@ class BookData{
     func prepareBookList(results : [NSFetchRequestResult]) -> [Book]{
         var bookList = [Book]()
         if results.count > 0 {
-            for result in results as! [NSManagedObjectContext] {
+            for result in results as! [NSManagedObject] {
                 let bookName = result.value(forKey: "name") as? String
                 let bookAuthor = result.value(forKey: "author") as? String
                 let bookPage = result.value(forKey: "pageNumber") as? Int
