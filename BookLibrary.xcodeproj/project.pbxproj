@@ -16,6 +16,8 @@
 		1F91035227D3F37100220BB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F91035027D3F37100220BB4 /* LaunchScreen.storyboard */; };
 		1F91035D27D3F7D000220BB4 /* AddPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91035C27D3F7D000220BB4 /* AddPageViewController.swift */; };
 		1F91035F27D3F7DE00220BB4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91035E27D3F7DE00220BB4 /* DetailViewController.swift */; };
+		1F91036127D3FD3F00220BB4 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91036027D3FD3F00220BB4 /* Book.swift */; };
+		1F91036327D3FDF900220BB4 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91036227D3FDF900220BB4 /* BookData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		1F91035327D3F37100220BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F91035C27D3F7D000220BB4 /* AddPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageViewController.swift; sourceTree = "<group>"; };
 		1F91035E27D3F7DE00220BB4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1F91036027D3FD3F00220BB4 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		1F91036227D3FDF900220BB4 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 		1F91035B27D3F3BD00220BB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F91036027D3FD3F00220BB4 /* Book.swift */,
+				1F91036227D3FDF900220BB4 /* BookData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,9 +179,11 @@
 			files = (
 				1F91034D27D3F37000220BB4 /* BookLibrary.xcdatamodeld in Sources */,
 				1F91034727D3F37000220BB4 /* ViewController.swift in Sources */,
+				1F91036127D3FD3F00220BB4 /* Book.swift in Sources */,
 				1F91035D27D3F7D000220BB4 /* AddPageViewController.swift in Sources */,
 				1F91035F27D3F7DE00220BB4 /* DetailViewController.swift in Sources */,
 				1F91034327D3F37000220BB4 /* AppDelegate.swift in Sources */,
+				1F91036327D3FDF900220BB4 /* BookData.swift in Sources */,
 				1F91034527D3F37000220BB4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
