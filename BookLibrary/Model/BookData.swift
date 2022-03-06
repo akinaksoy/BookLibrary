@@ -98,6 +98,36 @@ class BookData{
         
     }
     
+    func deleteBook (id : UUID) -> Bool {
+        let context = getContext()
+        let fetchRequest = getFetchRequest()
+        let uuidString = id.uuidString
+        fetchRequest.predicate = NSPredicate(format: "id = %@", uuidString)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    if let id = result.value(forKey: "id") as? UUID {
+                        context.delete(result)
+                        
+                        do {
+                            try context.save()
+                            return true
+                        }catch{
+                            print(error)
+                        }
+                        
+                    }
+                }
+            }
+        }catch{
+            print(error)
+        }
+        return false
+    }
+    
     
     func getBooks() -> [Book]{
         

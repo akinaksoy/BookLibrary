@@ -51,6 +51,17 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         }
         
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let idString = idArray[indexPath.row]
+            var isDeleted = bookData.deleteBook(id: idString)
+            if isDeleted == true {
+                nameArray.remove(at: indexPath.row)
+                idArray.remove(at: indexPath.row)
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         chosenID = idArray[indexPath.row]
