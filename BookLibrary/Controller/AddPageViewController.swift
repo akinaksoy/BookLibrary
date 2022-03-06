@@ -57,8 +57,12 @@ class AddPageViewController: UIViewController, UIImagePickerControllerDelegate &
         picker.allowsEditing = true
         present(picker, animated: true, completion: nil)
     }
-    
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        bookImageView.image = info[.editedImage] as? UIImage
+        self.dismiss(animated: true, completion: nil)
+        SaveButton.isEnabled = true
+        
+    }
     
     
    
