@@ -14,7 +14,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var tableView: UITableView!
     var nameArray = [String]()
     var idArray = [UUID]()
-    
+    var chosenID : UUID?
     var bookData = BookData()
     
     override func viewDidLoad() {
@@ -26,12 +26,17 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name("newData"), object: nil)
+    }
+    
     @objc func addButtonClicked() {
         performSegue(withIdentifier: "toAddBookPage", sender: nil)
     }
     
     @objc func getData(){
+        // Remove all data for duplicate datas
         nameArray.removeAll(keepingCapacity: false)
         idArray.removeAll(keepingCapacity: false)
         
@@ -47,6 +52,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenID = idArray[indexPath.row]
+        performSegue(withIdentifier: "toDetailPage", sender: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nameArray.count
@@ -57,9 +66,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         cell.textLabel?.text = nameArray[indexPath.row]
         return cell
     }
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name("newData"), object: nil)
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailPage" {
+            let destinationVC = segue.destination as! DetailViewController
+            destinationVC.choosenID = chosenID
+        }
     }
+    
     
 }
 

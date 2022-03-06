@@ -54,6 +54,51 @@ class BookData{
        
         
     }
+    
+    func getBookWithId(id : UUID) -> Book? {
+        let uuidString = id.uuidString
+        let fetchRequest = getFetchRequest()
+        let context = getContext()
+        fetchRequest.predicate = NSPredicate(format: "id = %@", uuidString)
+        fetchRequest.returnsObjectsAsFaults = false
+        var name : String?
+        var image : Data?
+        var author : String?
+        var pageNumber : Int?
+        var id : UUID?
+        do {
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    if let bookName = result.value(forKey: "name") as? String {
+                      name = bookName
+                    }
+                    if let bookid = result.value(forKey: "id") as? UUID {
+                        id = bookid
+                    }
+                    if let bookAuthor = result.value(forKey: "author") as? String {
+                        author = bookAuthor
+                    }
+                    if let number = result.value(forKey: "pageNumber") as? Int {
+                        pageNumber = number
+                    }
+                    if let imageData = result.value(forKey: "image") as? Data {
+                        image = imageData
+                    }
+                    
+                }
+                let book = Book(bookName: name!, bookAuthor: author!, bookID: id!, bookImage: image!, bookPageNumber: pageNumber!)
+                return book
+            }
+        }catch{
+            print(error)
+            return nil
+        }
+        return nil
+        
+    }
+    
+    
     func getBooks() -> [Book]{
         
         let fetchRequest = getFetchRequest()
